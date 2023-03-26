@@ -1,0 +1,17 @@
+<header>
+    {% if  app.user  %}
+        <span>Vous êtes bien connecté : {{app.user.name }}</span>
+    {% endif %}
+    <nav>
+        <ul>
+
+            {% if  app.user  %}
+                <li> <a href="{{path('app_logout')}}">Se déconnecter</a> </li>
+            {% else %}
+                <li> <a href="{{path('app_register_home')}}">Créer un compte</a> </li>
+                <li> <a href="{{path('app_login')}}">Se connecter</a> </li>
+            {% endif %}
+
+        </ul> 
+    </nav>
+</header>

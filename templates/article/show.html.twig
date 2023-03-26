@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Harvendore blog : {{article.title}} {% endblock %}
+
+{% block body %}
+
+    <h1>Mon article</h1>
+    <a href="{{ path('app_blog') }}">Revenir à tous les articles</a>
+    
+    <article class="article_container">
+        <h3> {{article.title}} </h3>
+        <p> {{article.articleText}} </p>
+        <p> {{article.createDate|date('d-m-Y')}} </p>
+        <p>{{ article.likes }} Likes, {{ article.dislikes }} Dislikes</p>
+        {# <a href="{{ path('app_article_edit', {'id': article.id}) }}">Editer {{article.name}}</a> #}
+        {# <a href="{{ path('app_article_delete', {'id': article.id}) }}">Supprimer cet article</a> #}
+        {# <a href="{{ path('edit_article', {'id': article.id}) }}">Modifier l'article</a> #}
+    </article>
+
+    {% if app.user %}
+        <form action="{{path('app_article_vote')}}" method="POST">
+            <input type="hidden" value="like" name="value">
+            <input type="hidden" value="{{article.id}}" name="idArticle">
+            <input type="submit" value="like">
+        </form>
+        <form action="{{path('app_article_vote')}}" method="POST">
+            <input type="hidden" value="dislike" name="value">
+            <input type="hidden" value="{{article.id}}" name="idArticle">
+            <input type="submit" value="dislike">
+        </form>
+        {# <a href="{{ path('app_article_vote', {'id': article.id, 'type': 'like'}) }}">Like</a>
+        <a href="{{ path('app_article_vote', {'id': article.id, 'type': 'dislike'}) }}">Dislike</a> #}
+    {% endif %}
+
+    {% if comments is not empty %}
+        {% for comment in comments %}
+            <div class="comment">
+                <p>{{ comment.commentText }}</p>
+                <p>Posté par {{ comment.user.name }} le {{ comment.createDate|date('d-m-Y H:i:s') }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Pas encore de commentaires pour cet article.</p>
+    {% endif %}
+
+    {% if app.user %}
+        {{ form_start(commentForm) }}
+        {{ form_widget(commentForm) }}
+        <button type="submit">Ajouter un commentaire</button>
+        {{ form_end(commentForm) }}
+    {% else %}
+        <p>Connectez-vous pour pouvoir ajouter un commentaire</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}Harvendore blog{% endblock %}
+
+{% block body %}
+
+    <h1>Tous mes articles</h1>
+    <a href="{{path('app_article_new')}}">Ajouter un article</a>
+
+    <section class="articles_pres">
+    {% for article in articles %}
+        <article class="articles_container">
+            <a href="{{ path('app_article_show', {'id': article.id}) }}">
+                <h3>{{ article.title }}</h3>
+            </a>
+            <p> {{article.article_text}} </p>
+            <p> {{article.createDate|date('d-m-Y')}} </p>
+        </article>
+    {% endfor %}
+    </section>
+{% endblock %}
