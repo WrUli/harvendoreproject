@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class ArticleController extends AbstractController
 {
@@ -25,7 +26,7 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    #[Route('/new_article', name:'app_article_new', methods:['GET', 'POST'])]
+    #[Route('admin/new_article', name:'app_article_new', methods:['GET', 'POST'])]
     public function action(Request $request, ArticleRepository $articleRepository): Response
     {
         $article = new Article();
@@ -49,7 +50,7 @@ class ArticleController extends AbstractController
         $article = $articleRepository->findOneBy(['id' => $id]);
         $user = $this->getUser();
         
-        $comments = $commentRepository->findBy(['article' => $article]);
+        $comments = $commentRepository->findBy(['article' => $article], ['createDate' => 'DESC']);
         $comment = new Comment();
         $comment->setCreateDate(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
         $commentForm = $this->createForm(CommentType::class, $comment);
@@ -104,6 +105,17 @@ class ArticleController extends AbstractController
         }
         $articleRepository->save($article, true);
         return $this->redirectToRoute('app_article_show', ['id' => $articleId]);
+    }
+    
+    #[Route('/article/{id}/delete', name: 'app_article_delete')]
+    #[Security('is_granted("ROLE_ADMIN")')]
+    public function deleteComment(ArticleRepository $articleRepository, Article $article)
+    {
+        $user = $this->getUser();
+
+        $articleRepository->remove($article, true);
+
+        return $this->redirectToRoute('article/index.html.twig');
     }
 
 }

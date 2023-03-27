@@ -12,9 +12,12 @@
         <p> {{article.articleText}} </p>
         <p> {{article.createDate|date('d-m-Y')}} </p>
         <p>{{ article.likes }} Likes, {{ article.dislikes }} Dislikes</p>
-        {# <a href="{{ path('app_article_edit', {'id': article.id}) }}">Editer {{article.name}}</a> #}
-        {# <a href="{{ path('app_article_delete', {'id': article.id}) }}">Supprimer cet article</a> #}
-        {# <a href="{{ path('edit_article', {'id': article.id}) }}">Modifier l'article</a> #}
+        {% if is_granted('ROLE_ADMIN') %}
+            {# <a href="{{ path('app_article_edit', {'id': article.id}) }}">Editer {{article.name}}</a> #}
+            <a href="{{ path('app_article_delete', {'id': article.id}) }}">Supprimer cet article</a>
+            {# <a href="{{ path('edit_article', {'id': article.id}) }}">Modifier l'article</a> #}
+        {% endif %}
+        
     </article>
 
     {% if app.user %}
@@ -28,16 +31,21 @@
             <input type="hidden" value="{{article.id}}" name="idArticle">
             <input type="submit" value="dislike">
         </form>
-        {# <a href="{{ path('app_article_vote', {'id': article.id, 'type': 'like'}) }}">Like</a>
-        <a href="{{ path('app_article_vote', {'id': article.id, 'type': 'dislike'}) }}">Dislike</a> #}
     {% endif %}
 
     {% if comments is not empty %}
         {% for comment in comments %}
             <div class="comment">
                 <p>{{ comment.commentText }}</p>
-                <p>Posté par {{ comment.user.name }} le {{ comment.createDate|date('d-m-Y H:i:s') }}</p>
+                <p>Posté par {{ comment.user.name }} le {{ comment.createDate|date('d-m-Y')}} à {{ comment.createDate|date('H:i') }}</p>
             </div>
+            {% if comment.user == app.user %}
+                {# <a href="{{ path('app_comment_edit', {'id': comment.id}) }}">Modifier</a> #}
+                <a href="{{ path('app_comment_delete', {'id': comment.id}) }}">Supprimer</a>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('app_comment_moderation_admin', {'id': comment.id}) }}">Supprimer</a>
+            {% endif %}
         {% endfor %}
     {% else %}
         <p>Pas encore de commentaires pour cet article.</p>
