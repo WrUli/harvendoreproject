@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %}Harvendore Admin{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Nom</th>
+                <th>Rôles</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>
+                        {% if user.roles is defined and user.roles|length %}
+                            <ul>
+                                {% for role in user.roles %}
+                                    <li>{{ role }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

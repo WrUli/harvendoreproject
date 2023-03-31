@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title %}Harvendore : modif de {{article.title}}{% endblock %}
+{% block body %}
+
+
+
+            <h1>Modifier l'article</h1>
+            
+            <section class="form_container">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form.title, null, {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.article_text, null, {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.article_text, {'attr': {'class': 'form-control textarea'}}) }}
+                </div>
+                <div class="supp_container">
+                    {{form_row(form.submit, {'attr' : {'class': 'inputSubmitClass'}})}}
+                </div>
+                
+                {{ form_end(form) }}
+            </section>
+
+            
+
+{% endblock %}

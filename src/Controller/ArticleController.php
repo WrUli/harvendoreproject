@@ -19,7 +19,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class ArticleController extends AbstractController
 {
     #[Route('/blog', name: 'app_blog')]
-    public function index(ArticleRepository $articleRepository): Response
+    public function indexBlog(ArticleRepository $articleRepository): Response
     {
         return $this->render('article/index.html.twig', [
             'articles' => $articleRepository->findAllArticleAuthor(),
@@ -27,7 +27,7 @@ class ArticleController extends AbstractController
     }
 
     #[Route('admin/new_article', name:'app_article_new', methods:['GET', 'POST'])]
-    public function action(Request $request, ArticleRepository $articleRepository): Response
+    public function newArticle(Request $request, ArticleRepository $articleRepository): Response
     {
         $article = new Article();
         $article->setCreateDate(new \DateTime('now', new \DateTimeZone('Europe/Paris')));
@@ -72,7 +72,7 @@ class ArticleController extends AbstractController
     }
 
     #[Route('article/vote/new_vote', name: 'app_article_vote')]
-    public function vote( Request $request, VoteRepository $voteRepository, ArticleRepository $articleRepository)
+    public function ratingArticle( Request $request, VoteRepository $voteRepository, ArticleRepository $articleRepository)
     {
         $value = $request->request->get('value');
         $articleId = $request->request->get('idArticle');
@@ -107,15 +107,4 @@ class ArticleController extends AbstractController
         return $this->redirectToRoute('app_article_show', ['id' => $articleId]);
     }
     
-    #[Route('/article/{id}/delete', name: 'app_article_delete')]
-    #[Security('is_granted("ROLE_ADMIN")')]
-    public function deleteComment(ArticleRepository $articleRepository, Article $article)
-    {
-        $user = $this->getUser();
-
-        $articleRepository->remove($article, true);
-
-        return $this->redirectToRoute('article/index.html.twig');
-    }
-
 }

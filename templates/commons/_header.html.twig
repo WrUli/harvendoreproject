@@ -8,7 +8,7 @@
             {% if  app.user  %}
                 <li> <a href="{{path('app_logout')}}">Se déconnecter</a> </li>
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('app_admin') }}">Pannel Admin</a>
+                    <a href="{{ path('app_admin_article') }}">Pannel Admin</a>
                 {% endif %}
             {% else %}
                 <li> <a href="{{path('app_register_home')}}">Créer un compte</a> </li>

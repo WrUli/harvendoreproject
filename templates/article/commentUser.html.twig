@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Harvendore Admin{% endblock %}
+
+{% block body %}
+
+    <section class="articles_pres">
+    {% for comment in comments %}
+        <article class="articles_container">
+            {# <p>{{ comment.id}}</p> #}
+            <p>{{ comment.comment_text }}</p>
+            <p> {{ comment.user_name}} </p>
+            <p> {{ comment.article_title}} </p>
+            <p>{{comment.createDate|date('d-m-Y')}}</p>
+        </article>
+    {% endfor %}
+    </section>
+{% endblock %}

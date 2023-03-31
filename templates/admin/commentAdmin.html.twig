@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}Harvendore Admin{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Commentaire</th>
+                <th>Utilisateur</th>
+                <th>Article</th>
+                <th>Date de création</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for comment in comments %}
+                <tr>
+                    <td>{{ comment.comment_text }}</td>
+                    <td>{{ comment.user_name }}</td>
+                    <td>{{ comment.article_title }}</td>
+                    <td>{{ comment.createDate|date('d-m-Y') }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

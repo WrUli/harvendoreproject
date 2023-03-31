@@ -15,6 +15,15 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class CommentController extends AbstractController
 {
+
+    #[Route('/blog', name: 'app_blog')]
+    public function indexBlog(ArticleRepository $articleRepository): Response
+    {
+        return $this->render('article/index.html.twig', [
+            'articles' => $articleRepository->findAllArticleAuthor(),
+        ]);
+    }
+
     #[Route('/comment/{id}/delete', name: 'app_comment_delete')]
     public function deleteComment(CommentRepository $commentRepository, Comment $comment)
     {

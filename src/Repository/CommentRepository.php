@@ -39,6 +39,33 @@ class CommentRepository extends ServiceEntityRepository
         }
     }
 
+    public function findAllCommentAdmin()
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->select('c.id','c.comment_text', 'c.createDate', 'u.name AS user_name', 'ar.title AS article_title')
+            ->leftJoin('c.user', 'u')
+            ->leftJoin('c.article', 'ar')
+            ->getQuery()
+            ->getResult();
+        return $qb;
+    }
+
+    // $id paramètres d'entrée &&  : ?array paramètre de sortie
+    // public function findAllMusicStyleArtistById($id): ?array
+    // {
+    //     $queryBuilder = $this->createQueryBuilder('m')
+    //         ->select('m.id', 'm.name', 'm.img', 's.name AS style_name', 'ar.name AS artist_name')
+    //         ->leftJoin('m.artist', 'ar')
+    //         ->leftJoin('m.style', 's')
+    //         ->andWhere('m.id = :id')
+    //         ->setParameter('id', $id)
+    //         ->getQuery();
+        //Là ça fonctionne pas parce que ça retourne des arrays
+        // return $queryBuilder->getQuery()->getResult();
+        //Avec ça, ça va, mais il faut rappeler le getQuery au dessus. Et ça ne renvoie pas dans un array vide et renvoie une seule entité, donc plus besoin du [0]
+    //     return $queryBuilder->getOneOrNullResult();
+    // }
+
 //    /**
 //     * @return Comment[] Returns an array of Comment objects
 //     */

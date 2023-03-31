@@ -1,0 +1,5 @@
+{% if is_granted('ROLE_ADMIN')%}
+    <a href="{{path('app_admin_article')}}">Liste des articles</a>
+    <a href="{{path('app_admin_comment')}}">Liste des commentaires</a>
+    <a href="{{path('app_admin_user')}}">Liste des utilisateurs</a>
+{% endif %}
