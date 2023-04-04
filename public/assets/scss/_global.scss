@@ -1,0 +1,40 @@
+@font-face {
+    font-family: "HindMaduraiR" ;
+    src: url(../fonts/HindMadurai-Regular.ttf);
+}
+
+@font-face {
+    font-family: "HindMaduraiSB";
+    src: url(../fonts/HindMadurai-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: "PoppinsR";
+    src: url(../fonts/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family:"PoppinsSB";
+    src: url(../fonts/Poppins-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: "PoppinsItalic";
+    src: url(../fonts/Poppins-Italic.ttf);
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    list-style: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}

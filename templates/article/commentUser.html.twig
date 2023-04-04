@@ -7,7 +7,7 @@
     {% for comment in comments %}
         <article class="articles_container">
             {# <p>{{ comment.id}}</p> #}
-            <p>{{ comment.comment_text }}</p>
+            <p>{{ comment.comment_text|escape }}</p>
             <p> {{ comment.user_name}} </p>
             <p> {{ comment.article_title}} </p>
             <p>{{comment.createDate|date('d-m-Y')}}</p>

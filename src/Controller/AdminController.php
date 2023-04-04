@@ -47,24 +47,46 @@ class AdminController extends AbstractController
 
     #[Route('/edit_article/{id}', name: 'app_admin_article_edit')]
     public function editArticle(Request $request, ArticleRepository $articleRepository, int $id)
-    {
-        $article = $articleRepository->findOneBy(['id' => $id]);
-        $articleForm = $this->createForm(ArticleType::class, $article );
-        $articleForm->handleRequest($request);
+{
+    $article = $articleRepository->findOneBy(['id' => $id]);
+    $articleForm = $this->createForm(ArticleType::class, $article );
+    $articleForm->handleRequest($request);
 
-        if ($articleForm->isSubmitted() && $articleForm->isValid())
+    if ($articleForm->isSubmitted() && $articleForm->isValid())
+    {
+        $date = new DateTime();
+        $article->setUpdateDate($date);
+
+        $file = $articleForm->get('img')->getData();
+        if ($file) 
         {
-            $date = new DateTime();
-            $article->setUpdateDate($date);
-            $articleRepository->save($article, true);
-            return $this->redirectToRoute('app_admin_article');
+            // Supprime l'ancien fichier d'image
+            $oldFile = $article->getImg();
+            if ($oldFile) 
+            {
+                $oldFilePath = $this->getParameter('miniature_directory') . '/' . $oldFile;
+                if (file_exists($oldFilePath)) 
+                {
+                    unlink($oldFilePath);
+                }
+            }
+            // Télécharge le nouveau fichier d'image
+            $originalNameFile = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            $newFileName = $originalNameFile.'_'.uniqid().'.'.$file->guessExtension();
+            $article->setImg($newFileName);
+            $file->move($this->getParameter('miniature_directory'),$newFileName);
         }
-        return $this->render('admin/editArticleAdmin.html.twig',[
-            'form' => $articleForm->createView(),
-            'article' => $article,
-            'articleTitle' => $article->getTitle()
-        ]);
+
+        $articleRepository->save($article, true);
+        return $this->redirectToRoute('app_admin_article');
     }
+
+    return $this->render('admin/editArticleAdmin.html.twig',[
+        'form' => $articleForm->createView(),
+        'article' => $article,
+        'articleTitle' => $article->getTitle()
+    ]);
+}
 
     // #[Route('/', name: 'app_admin_user')]
     // public function indexUserAdmin(ArticleRepository $articleRepository): Response

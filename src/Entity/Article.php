@@ -40,6 +40,9 @@ class Article
     #[ORM\Column(nullable: true)]
     private ?int $dislikes = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $img = null;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -179,6 +182,18 @@ class Article
     public function setDislikes(?int $dislikes): self
     {
         $this->dislikes = $dislikes;
+
+        return $this;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(?string $img): self
+    {
+        $this->img = $img;
 
         return $this;
     }

@@ -36,6 +36,14 @@ class ArticleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) 
         {   
+            $file = $form->get('img')->getData();
+            if ($file) 
+            {
+                $originalNameFile = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFileName = $originalNameFile.'_'.uniqid().'.'.$file->guessExtension();
+                $article->setImg($newFileName);
+                $file->move($this->getParameter('miniature_directory'),$newFileName);
+            }
             $articleRepository->save($article, true);
             return $this->redirectToRoute('app_blog', [], Response::HTTP_SEE_OTHER);
         }

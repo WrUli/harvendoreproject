@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CommentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Mime\Message;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 class Comment
@@ -15,6 +16,9 @@ class Comment
     private ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    // @Assert\NotBlank(Message="Entrez du texte pour votre commentaire")
+    // @Assert\Length(min=5,max=500, minMessage="minErrorMessage",maxMessage="MaxErrorMessage")
+    // @Assert\Type(type="integer",message="Le commentaire doit être du texte")
     private ?string $comment_text = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
