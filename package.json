@@ -1,0 +1,22 @@
+{
+  "name": "harvendoreproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "sass": "sass --watch sass/main.scss:public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WrUli/harvendoreproject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WrUli/harvendoreproject/issues"
+  },
+  "homepage": "https://github.com/WrUli/harvendoreproject#readme"
+}
