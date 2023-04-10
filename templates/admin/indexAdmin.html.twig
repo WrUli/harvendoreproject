@@ -9,45 +9,61 @@
         <a href="{{ path('app_article_new') }}">Ajouter un article</a>
     {% endif %}
     
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Image</th>
-                <th>Texte</th>
-                <th>Date de création</th>
-                <th>Date de modification</th>
-                <th>Commentaire</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for article in articles %}
+    
+    <section class="pannel_admin_container">
+
+        <div class="sidebar_admin">
+            <a href="{{path('app_admin_article')}}">Liste des articles</a>
+            <a href="{{path('app_admin_comment')}}">Liste des commentaires</a>
+            <a href="{{path('app_admin_user')}}">Liste des utilisateurs</a>
+        </div>
+    
+        <table class="content_admin">
+            <thead>
                 <tr>
-                    <td>
-                        <a href="{{ path('app_article_show', {'id': article.id}) }}">
-                            {{ article.title }}
-                        </a>
-                    </td>
-                    <td>
-                        {% if article.img %}
-                            <img src="{{ asset('uploadDirectory/' ~ article.img) }}" alt="{{ article.title }}">
-                        {% else %}
-                            <img src="{{ asset('assets/img/questionmarkcake.jpg')}}" alt="Image générique">
-                        {% endif %}
-                    </td>
-                    <td>{{ article.article_text_admin_short }}</td>
-                    
-                    <td>{{ article.createDate|date('d-m-Y') }}</td>
-                    <td>{{ article.updateDate|date('d-m-Y') }}</td>
-                    <td>{{ article.comment_count }}</td>
-                    <td>
-                        <a href="{{ path('app_article_show', {'id': article.id}) }}" class="btn btn-primary">Afficher</a>
-                        <a href="{{ path('app_admin_article_edit', {'id': article.id}) }}" class="btn btn-warning">Modifier</a>
-                        <a href="{{ path('app_article_delete', {'id': article.id}) }}" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')">Supprimer</a>
-                    </td>
+                    <th>Titre</th>
+                    <th>Image</th>
+                    <th>Texte</th>
+                    <th>Date de création</th>
+                    <th>Date de modification</th>
+                    <th>Commentaire</th>
+                    <th>Actions</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for article in articles %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('app_article_show', {'id': article.id}) }}">
+                                {{ article.title }}
+                            </a>
+                        </td>
+                        <td>
+                            {% if article.img %}
+                                <img src="{{ asset('uploadDirectory/' ~ article.img) }}" alt="{{ article.title }}">
+                            {% else %}
+                                <img src="{{ asset('assets/img/questionmarkcake.jpg')}}" alt="Image générique">
+                            {% endif %}
+                        </td>
+                        <td>{{ article.article_text_admin_short }}</td>
+                        
+                        <td>{{ article.createDate|date('d-m-Y') }}</td>
+                        <td>{{ article.updateDate|date('d-m-Y') }}</td>
+                        <td>{{ article.comment_count }}</td>
+                        <td>
+                            <a href="{{ path('app_article_show', {'id': article.id}) }}" class="btn btn-primary">Afficher</a>
+                            <a href="{{ path('app_admin_article_edit', {'id': article.id}) }}" class="btn btn-warning">Modifier</a>
+                            <a href="{{ path('app_article_delete', {'id': article.id}) }}" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </section>
+    
+        
+
+
+    
 {% endblock %}

@@ -34,4 +34,88 @@ a, a:hover, a:focus, a:active {
   color: inherit;
 }
 
+.pannel_admin_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.pannel_admin_container .sidebar_admin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+  width: 200px;
+}
+.pannel_admin_container .sidebar_admin a {
+  display: block;
+  text-align: center;
+  color: #383b3c;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.pannel_admin_container .sidebar_admin a:hover {
+  background-color: green;
+  color: #fff;
+}
+.pannel_admin_container .content_admin {
+  width: calc(100% - 240px);
+}
+.pannel_admin_container .content_admin th,
+.pannel_admin_container .content_admin td {
+  text-align: center;
+}
+.pannel_admin_container .content_admin th {
+  background-color: green;
+  color: #fff;
+}
+.pannel_admin_container .content_admin td {
+  padding: 10px;
+}
+.pannel_admin_container .content_admin tr:nth-child(even) {
+  background-color: #fff;
+}
+.pannel_admin_container .content_admin tr:hover {
+  background-color: black;
+  color: #fff;
+}
+.pannel_admin_container .content_admin tr:hover a {
+  color: #fff;
+}
+.pannel_admin_container .content_admin a {
+  display: inline-block;
+  margin: 0 5px;
+  color: green;
+  transition: all 0.3s ease-in-out;
+}
+.pannel_admin_container .content_admin a:hover {
+  color: #fff;
+}
+.pannel_admin_container .content_admin .btn-primary {
+  background-color: green;
+  color: #fff;
+}
+.pannel_admin_container .content_admin .btn-primary:hover {
+  background-color: black;
+}
+.pannel_admin_container .content_admin .btn-warning {
+  background-color: #ffc107;
+  color: black;
+}
+.pannel_admin_container .content_admin .btn-warning:hover {
+  background-color: #e0a800;
+}
+.pannel_admin_container .content_admin .btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+.pannel_admin_container .content_admin .btn-danger:hover {
+  background-color: #c82333;
+}
+
 /*# sourceMappingURL=style.css.map */
