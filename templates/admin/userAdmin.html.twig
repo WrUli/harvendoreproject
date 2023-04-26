@@ -3,31 +3,46 @@
 
 {% block body %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Email</th>
-                <th>Nom</th>
-                <th>Rôles</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for user in users %}
-                <tr>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.name }}</td>
-                    <td>
-                        {% if user.roles is defined and user.roles|length %}
-                            <ul>
-                                {% for role in user.roles %}
-                                    <li>{{ role }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<section class="pannel_admin_container">
 
+    <div class="sidebar_admin">
+        <a href="{{path('app_admin_article')}}">Liste des articles</a>
+        <a href="{{path('app_admin_comment')}}">Liste des commentaires</a>
+        <a href="{{path('app_admin_user')}}">Liste des utilisateurs</a>
+    </div>
+
+    <div class="table_container">
+        <table class="table_admin table_user_admin">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Nom</th>
+                    <th>Rôles</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class="tab_container">
+                {% for user in users %}
+                    <tr>
+                        <td><p class="admin_tab_padding tab_spacing">{{ user.email }}</p></td>
+                        <td><p class="admin_tab_padding tab_spacing">{{ user.name }}</p></td>
+                        <td>
+                            {% if user.roles is defined and user.roles|length %}
+                                <ul class="admin_tab_padding tab_spacing">
+                                    {% for role in user.roles %}
+                                        <li>{{ role }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </td>
+                        <td class="btn_container_user">
+                            <a href="" class="btn btn_show">Commentaires</a>
+                            <a href="" class="btn btn_delete">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
 {% endblock %}

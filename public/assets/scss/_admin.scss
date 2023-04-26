@@ -1,106 +1,142 @@
 .pannel_admin_container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    background-color: $light-color;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  
-    .sidebar_admin {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-right: 20px;
-      width: 200px;
-  
-      a {
-        display: block;
-        text-align: center;
-        color: $secondary-color;
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-  
-        &:hover {
-          background-color: $primary-color;
-          color: $light-color;
-        }
-      }
-    }
-
-    .content_admin {
-        width: calc(100% - 240px);
-    
-        th,
-        td {
-          text-align: center;
-        }
-    
-        th {
-          background-color: $primary-color;
-          color: $light-color;
-        }
-    
-        td {
-          padding: 10px;
-        }
-    
-        tr:nth-child(even) {
-          background-color: $light-color;
-        }
-    
-        tr:hover {
-          background-color: $dark-color;
-          color: $light-color;
-    
-          a {
-            color: $light-color;
-          }
-        }
-    
-        a {
-          display: inline-block;
-          margin: 0 5px;
-          color: $primary-color;
-          transition: all 0.3s ease-in-out;
-    
-          &:hover {
-            color: $light-color;
-          }
-        }
-    
-        .btn-primary {
-          background-color: $primary-color;
-          color: $light-color;
-    
-          &:hover {
-            background-color: $dark-color;
-          }
-        }
-    
-        .btn-warning {
-          background-color: #ffc107;
-          color: $dark-color;
-    
-          &:hover {
-            background-color: #e0a800;
-          }
-        }
-    
-        .btn-danger {
-          background-color: #dc3545;
-          color: $light-color;
-    
-          &:hover {
-            background-color: #c82333;
-          }
-        }
-      }
-
-
+  display: flex;
 }
 
+.sidebar_admin {
+  top: 0;
+  width: 15vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  padding-top: 12%;
+  background-color: #564d55;
+  z-index: 0;
+  
+  a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 15px;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+    background-color: #564d55;
+    color: white;
+  }
+  a:hover {
+    background-color: white;
+    color: #564d55;
+    border:2px solid #564d55;
+  }
+}
 
+.tab_spacing {
+  width: 140px;
+}
 
+.table_admin_addarticle {
+  padding-left: 28%;
+  padding-top: 15px;
+  padding-bottom: 35px;
+  a {
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: lightblue;
+  }
+}
+
+.table_admin {
+  padding-left: 28%;
+  th {
+    text-align: center;
+    background-color: #f5f5f5;
+    font-weight: bold;
+  }
+  td {
+    text-align: center;
+  }
+}
+
+.table_container {
+  padding-top: 25px;
+  width: 60vw;
+}
+
+.tab_container {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.tab_container th {
+  width: 15%;
+}
+
+.admin_tab_title {
+  padding: 10px;
+}
+
+.admin_tab_padding {
+  padding: 10px;
+}
+
+.tab_img {
+  max-width: 200px;
+  max-height: 200px;
+  padding: 10px;
+}
+
+.btn_container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px;
+}
+
+.btn_show {
+  background-color: lightgreen;
+}
+
+.btn_modify {
+  background-color: orange;
+}
+
+.btn_delete {
+  background-color: lightcoral;
+}
+
+// USER 
+
+.table_user_admin {
+  padding-left: 50%;
+}
+
+.btn_container_user {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 10px;
+}
+
+// COMMENT 
+
+.tab_spacing_comment {
+  width: 200px;
+}
+
+.btn_container_comment {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 10px;
+}

@@ -1,15 +1,14 @@
 <header>
-    {% if  app.user  %}
-        <span>Vous êtes bien connecté : {{app.user.name }}</span>
-    {% endif %}
-    <nav>
+    
+    <nav class="header_nav">
         <ul>
-                <li><a href="{{path('app_blog')}}">Revenir au blog</a></li>
+            {# <li><a href="{{path('app_blog')}}">Revenir au blog</a></li> #}
             {% if  app.user  %}
+                <li> <span class="header_loged_user">Connecté: {{app.user.name }}</span> </li>
                 <li> <a href="{{path('app_logout')}}">Se déconnecter</a> </li>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('app_admin_article') }}">Pannel Admin</a>
-                {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <li> <a href="{{ path('app_admin_article') }}">Pannel Admin</a> </li>
+            {% endif %}
             {% else %}
                 <li> <a href="{{path('app_register_home')}}">Créer un compte</a> </li>
                 <li> <a href="{{path('app_login')}}">Se connecter</a> </li>
@@ -17,4 +16,10 @@
 
         </ul> 
     </nav>
+    
+        <a href="{{path('app_blog')}}"> <div class="header_logo"></div> </a>
+    
+    {% if  app.user  %}
+        
+    {% endif %}
 </header>

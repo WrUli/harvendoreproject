@@ -24,7 +24,7 @@ class AdminController extends AbstractController
     public function indexArticleAdmin(ArticleRepository $articleRepository): Response
     {
         return $this->render('admin/indexAdmin.html.twig', [
-            'articles' => $articleRepository->findAllArticleAdmin(),
+            'articles' => $articleRepository->findAllArticleAdminShort(),
             
         ]);
     }

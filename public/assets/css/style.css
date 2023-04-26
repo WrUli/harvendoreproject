@@ -26,6 +26,7 @@
 }
 
 html {
+  height: 100%;
   scroll-behavior: smooth;
 }
 
@@ -34,88 +35,200 @@ a, a:hover, a:focus, a:active {
   color: inherit;
 }
 
-.pannel_admin_container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  background-color: #fff;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
-.pannel_admin_container .sidebar_admin {
+body {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-right: 20px;
+  min-height: 100%;
+  margin: 0;
+  overflow-y: scroll;
+}
+
+main {
+  flex: 1;
+}
+
+header {
+  height: 25vh;
+  color: white;
+  background-color: #38383F;
+  z-index: 1;
+  position: relative;
+}
+
+.header_nav {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding-top: 25px;
+}
+.header_nav ul {
+  width: 250px;
+  height: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+.header_nav ul li, .header_nav ul a {
+  line-height: 15px;
+}
+
+.header_logo {
+  background-image: url("https://www.elevagesaintmarcellin.fr/favicon.ico");
+  height: 125px;
+  width: 125px;
+  background-position: center;
+  background-size: cover;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.footer {
+  flex-shrink: 0;
+  height: 10vh;
+  color: white;
+  background-color: #38383F;
+  z-index: 1;
+}
+
+.pannel_admin_container {
+  display: flex;
+}
+
+.sidebar_admin {
+  top: 0;
+  width: 15vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  padding-top: 12%;
+  background-color: #564d55;
+  z-index: 0;
+}
+.sidebar_admin a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 15px;
+  border: 2px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  background-color: #564d55;
+  color: white;
+}
+.sidebar_admin a:hover {
+  background-color: white;
+  color: #564d55;
+  border: 2px solid #564d55;
+}
+
+.tab_spacing {
+  width: 140px;
+}
+
+.table_admin_addarticle {
+  padding-left: 28%;
+  padding-top: 15px;
+  padding-bottom: 35px;
+}
+.table_admin_addarticle a {
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: lightblue;
+}
+
+.table_admin {
+  padding-left: 28%;
+}
+.table_admin th {
+  text-align: center;
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+.table_admin td {
+  text-align: center;
+}
+
+.table_container {
+  padding-top: 25px;
+  width: 60vw;
+}
+
+.tab_container {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.tab_container th {
+  width: 15%;
+}
+
+.admin_tab_title {
+  padding: 10px;
+}
+
+.admin_tab_padding {
+  padding: 10px;
+}
+
+.tab_img {
+  max-width: 200px;
+  max-height: 200px;
+  padding: 10px;
+}
+
+.btn_container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px;
+}
+
+.btn_show {
+  background-color: lightgreen;
+}
+
+.btn_modify {
+  background-color: orange;
+}
+
+.btn_delete {
+  background-color: lightcoral;
+}
+
+.table_user_admin {
+  padding-left: 50%;
+}
+
+.btn_container_user {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 10px;
+}
+
+.tab_spacing_comment {
   width: 200px;
 }
-.pannel_admin_container .sidebar_admin a {
-  display: block;
-  text-align: center;
-  color: #383b3c;
+
+.btn_container_comment {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
   padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-}
-.pannel_admin_container .sidebar_admin a:hover {
-  background-color: green;
-  color: #fff;
-}
-.pannel_admin_container .content_admin {
-  width: calc(100% - 240px);
-}
-.pannel_admin_container .content_admin th,
-.pannel_admin_container .content_admin td {
-  text-align: center;
-}
-.pannel_admin_container .content_admin th {
-  background-color: green;
-  color: #fff;
-}
-.pannel_admin_container .content_admin td {
-  padding: 10px;
-}
-.pannel_admin_container .content_admin tr:nth-child(even) {
-  background-color: #fff;
-}
-.pannel_admin_container .content_admin tr:hover {
-  background-color: black;
-  color: #fff;
-}
-.pannel_admin_container .content_admin tr:hover a {
-  color: #fff;
-}
-.pannel_admin_container .content_admin a {
-  display: inline-block;
-  margin: 0 5px;
-  color: green;
-  transition: all 0.3s ease-in-out;
-}
-.pannel_admin_container .content_admin a:hover {
-  color: #fff;
-}
-.pannel_admin_container .content_admin .btn-primary {
-  background-color: green;
-  color: #fff;
-}
-.pannel_admin_container .content_admin .btn-primary:hover {
-  background-color: black;
-}
-.pannel_admin_container .content_admin .btn-warning {
-  background-color: #ffc107;
-  color: black;
-}
-.pannel_admin_container .content_admin .btn-warning:hover {
-  background-color: #e0a800;
-}
-.pannel_admin_container .content_admin .btn-danger {
-  background-color: #dc3545;
-  color: #fff;
-}
-.pannel_admin_container .content_admin .btn-danger:hover {
-  background-color: #c82333;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -52,7 +52,17 @@ class ArticleRepository extends ServiceEntityRepository
     public function findAllArticleAdmin()
     {
         $qb = $this->createQueryBuilder('a')
-            ->select('a.id', 'a.title', 'a.updateDate', 'a.img', "SUBSTRING(a.article_text, 1, 100) as article_text_admin_short",'a.createDate')
+            ->select('a.id', 'a.title', 'a.updateDate', 'a.img', "SUBSTRING(a.article_text, 1, 75) as article_text_admin_short",'a.createDate')
+            ->addSelect('(SELECT COUNT(c.id) FROM App\Entity\Comment c WHERE c.article = a) AS comment_count')
+            ->getQuery()
+            ->getResult();
+        return $qb;
+    }
+
+    public function findAllArticleAdminShort()
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->select('a.id', "SUBSTRING(a.title, 1, 15) as article_title_admin_short", 'a.updateDate', 'a.img', "SUBSTRING(a.article_text, 1, 75) as article_text_admin_short",'a.createDate')
             ->addSelect('(SELECT COUNT(c.id) FROM App\Entity\Comment c WHERE c.article = a) AS comment_count')
             ->getQuery()
             ->getResult();

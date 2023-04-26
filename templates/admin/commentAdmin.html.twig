@@ -3,25 +3,42 @@
 
 {% block body %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Commentaire</th>
-                <th>Utilisateur</th>
-                <th>Article</th>
-                <th>Date de création</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for comment in comments %}
+<section class="pannel_admin_container">
+
+    <div class="sidebar_admin">
+        <a href="{{path('app_admin_article')}}">Liste des articles</a>
+        <a href="{{path('app_admin_comment')}}">Liste des commentaires</a>
+        <a href="{{path('app_admin_user')}}">Liste des utilisateurs</a>
+    </div>
+
+    <div class="table_container">
+        <table class="table_admin table_user_admin">
+            <thead>
                 <tr>
-                    <td>{{ comment.comment_text }}</td>
-                    <td>{{ comment.user_name }}</td>
-                    <td>{{ comment.article_title }}</td>
-                    <td>{{ comment.createDate|date('d-m-Y') }}</td>
+                    <th>Utilisateur</th>
+                    <th lass="tab_spacing_comment">Commentaire</th>
+                    <th>Article</th>
+                    <th>Date de création</th>
+                    <th>Actions</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+
+            <tbody>
+                {% for comment in comments %}
+                    <tr>
+                        <td><p class="admin_tab_padding tab_spacing">{{ comment.user_name }}</p></td>
+                        <td><p class="admin_tab_padding tab_spacing_comment">{{ comment.comment_text }}</p></td>
+                        <td><p class="admin_tab_padding tab_spacing">{{ comment.article_title }}</p></td>
+                        <td><p class="admin_tab_padding tab_spacing">{{ comment.createDate|date('d-m-Y') }}</p></td>
+                        <td class="btn_container_comment">
+                            <a href="" class="btn btn_show">Modérer</a>
+                            <a href="" class="btn btn_delete">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
 
 {% endblock %}

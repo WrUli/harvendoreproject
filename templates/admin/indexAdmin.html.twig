@@ -4,10 +4,7 @@
 
 {% block body %}
 
-    <h1>Tous mes articles</h1>
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('app_article_new') }}">Ajouter un article</a>
-    {% endif %}
+    
     
     
     <section class="pannel_admin_container">
@@ -18,47 +15,58 @@
             <a href="{{path('app_admin_user')}}">Liste des utilisateurs</a>
         </div>
     
-        <table class="content_admin">
-            <thead>
-                <tr>
-                    <th>Titre</th>
-                    <th>Image</th>
-                    <th>Texte</th>
-                    <th>Date de création</th>
-                    <th>Date de modification</th>
-                    <th>Commentaire</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for article in articles %}
+        <div class="table_container">
+            {# {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('app_article_new') }}">Ajouter un article</a>
+            {% endif %} #}
+
+        
+            <table class="table_admin">
+                <div class="table_admin_addarticle">
+                    <a href="{{path('app_article_new')}}">Créer un nouvel article</a>
+                </div>
+                <thead>
                     <tr>
-                        <td>
-                            <a href="{{ path('app_article_show', {'id': article.id}) }}">
-                                {{ article.title }}
-                            </a>
-                        </td>
-                        <td>
-                            {% if article.img %}
-                                <img src="{{ asset('uploadDirectory/' ~ article.img) }}" alt="{{ article.title }}">
-                            {% else %}
-                                <img src="{{ asset('assets/img/questionmarkcake.jpg')}}" alt="Image générique">
-                            {% endif %}
-                        </td>
-                        <td>{{ article.article_text_admin_short }}</td>
-                        
-                        <td>{{ article.createDate|date('d-m-Y') }}</td>
-                        <td>{{ article.updateDate|date('d-m-Y') }}</td>
-                        <td>{{ article.comment_count }}</td>
-                        <td>
-                            <a href="{{ path('app_article_show', {'id': article.id}) }}" class="btn btn-primary">Afficher</a>
-                            <a href="{{ path('app_admin_article_edit', {'id': article.id}) }}" class="btn btn-warning">Modifier</a>
-                            <a href="{{ path('app_article_delete', {'id': article.id}) }}" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')">Supprimer</a>
-                        </td>
+                        <th class="tab_all" >Titre</th>
+                        <th>Image</th>
+                        <th>Texte</th>
+                        <th>Date de création</th>
+                        <th>Date de modification</th>
+                        <th>Commentaire</th>
+                        <th>Actions</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="tab_container">
+                    {% for article in articles %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('app_article_show', {'id': article.id}) }}" class="admin_tab_title">
+                                    {{ article.article_title_admin_short }}
+                                </a>
+                            </td>
+                            <td>
+                                {% if article.img %}
+                                    <img src="{{ asset('uploadDirectory/' ~ article.img) }}" alt="{{ article.title }}" class="tab_img">
+                                {% else %}
+                                    <img src="{{ asset('assets/img/questionmarkcake.jpg')}}" alt="Image générique" class="tab_img">
+                                {% endif %}
+                            </td>
+                            <td><p class="admin_tab_padding">{{ article.article_text_admin_short }}</p></td>
+                            <td><p class="admin_tab_padding tab_spacing">{{ article.createDate|date('d-m-Y') }}</p></td>
+                            <td><p class="admin_tab_padding tab_spacing">{{ article.updateDate|date('d-m-Y') }}</p></td>
+                            <td><p class="admin_tab_padding">{{ article.comment_count }}</p></td>
+                            <td class="btn_container">
+                                <a href="{{ path('app_article_show', {'id': article.id}) }}" class="btn btn_show">Afficher</a>
+                                <a href="{{ path('app_admin_article_edit', {'id': article.id}) }}" class="btn btn_modify">Modifier</a>
+                                <a href="{{ path('app_article_delete', {'id': article.id}) }}" class="btn btn_delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+        
 
     </section>
     

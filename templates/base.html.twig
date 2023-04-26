@@ -18,7 +18,9 @@
     <body>
         {% include 'commons/_header.html.twig' %}
         {# {% include 'commons/_adminNav.html.twig' %} #}
-        {% block body %}{% endblock %}
+        <main>
+            {% block body %}{% endblock %}
+        </main>
         {% include 'commons/_footer.html.twig' %}
     </body>
 </html>

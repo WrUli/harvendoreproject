@@ -1,0 +1,38 @@
+header {
+    height: 25vh;
+    color: white;
+    background-color: #38383F;
+    z-index: 1;
+    position: relative;
+}
+
+.header_nav {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding-top: 25px;
+    ul {
+        width: 250px;
+        height: 25px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 25px;
+        li, a {
+            line-height: 15px;
+        }
+    }
+}
+
+.header_logo {
+    background-image: url("https://www.elevagesaintmarcellin.fr/favicon.ico");
+    height: 125px;
+    width: 125px;
+    background-position: center;
+    background-size: cover;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    // text-align: center;
+}
