@@ -5,7 +5,7 @@
 
 <section class="pannel_admin_container">
 
-    <div class="sidebar_admin">
+    <div class="admin_sidebar">
         <a href="{{path('app_admin_article')}}">Liste des articles</a>
         <a href="{{path('app_admin_comment')}}">Liste des commentaires</a>
         <a href="{{path('app_admin_user')}}">Liste des utilisateurs</a>
@@ -26,10 +26,10 @@
             <tbody>
                 {% for comment in comments %}
                     <tr>
-                        <td><p class="admin_tab_padding tab_spacing">{{ comment.user_name }}</p></td>
-                        <td><p class="admin_tab_padding tab_spacing_comment">{{ comment.comment_text }}</p></td>
-                        <td><p class="admin_tab_padding tab_spacing">{{ comment.article_title }}</p></td>
-                        <td><p class="admin_tab_padding tab_spacing">{{ comment.createDate|date('d-m-Y') }}</p></td>
+                        <td><p class="admin_tab_padding tab_spacing_index_2">{{ comment.user_name }}</p></td>
+                        <td><p class="admin_tab_padding tab_spacing_index_1">{{ comment.comment_text }}</p></td>
+                        <td><p class="admin_tab_padding tab_spacing_index_2">{{ comment.article_title }}</p></td>
+                        <td><p class="admin_tab_padding tab_spacing_index_2">{{ comment.createDate|date('d-m-Y') }}</p></td>
                         <td class="btn_container_comment">
                             <a href="" class="btn btn_show">Modérer</a>
                             <a href="" class="btn btn_delete">Supprimer</a>

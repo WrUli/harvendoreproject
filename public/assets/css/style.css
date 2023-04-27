@@ -97,7 +97,7 @@ header {
   display: flex;
 }
 
-.sidebar_admin {
+.admin_sidebar {
   top: 0;
   width: 15vw;
   height: 100vh;
@@ -108,7 +108,7 @@ header {
   background-color: #564d55;
   z-index: 0;
 }
-.sidebar_admin a {
+.admin_sidebar a {
   padding-top: 10px;
   padding-bottom: 10px;
   margin: 15px;
@@ -120,14 +120,22 @@ header {
   background-color: #564d55;
   color: white;
 }
-.sidebar_admin a:hover {
+.admin_sidebar a:hover {
   background-color: white;
   color: #564d55;
   border: 2px solid #564d55;
 }
 
-.tab_spacing {
-  width: 140px;
+.tab_spacing_index_1 {
+  width: 300px;
+}
+
+.tab_spacing_index_2 {
+  width: 200px;
+}
+
+.tab_spacing_index_3 {
+  width: 150px;
 }
 
 .table_admin_addarticle {
@@ -191,6 +199,7 @@ header {
 }
 
 .btn {
+  display: inline-block;
   cursor: pointer;
   border-radius: 5px;
   color: #fff;
@@ -210,7 +219,7 @@ header {
 }
 
 .table_user_admin {
-  padding-left: 50%;
+  padding-left: 28%;
 }
 
 .btn_container_user {
@@ -220,15 +229,37 @@ header {
   padding: 10px;
 }
 
-.tab_spacing_comment {
-  width: 200px;
-}
-
 .btn_container_comment {
   display: flex;
   gap: 10px;
   justify-content: center;
   padding: 10px;
+}
+
+.blog_and_sidebar_container {
+  display: flex;
+}
+
+.blog_sidebar {
+  background-color: lightgreen;
+  top: 0;
+  width: 15%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog_container {
+  background-color: lightcoral;
+  width: 50%;
+  margin-left: 19%;
+}
+.blog_container a {
+  display: inline-block;
+}
+
+.blog_article_container {
+  display: flex;
 }
 
 /*# sourceMappingURL=style.css.map */

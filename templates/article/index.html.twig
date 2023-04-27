@@ -3,19 +3,51 @@
 
 {% block body %}
 
-    <h1>Tous mes articles</h1>
-    {% if is_granted('ROLE_ADMIN')%}
-    <a href="{{path('app_article_new')}}">Ajouter un article</a>
-    {% endif %}
-    <section class="articles_pres">
-    {% for article in articles %}
-        <article class="articles_container">
-            <a href="{{ path('app_article_show', {'id': article.id}) }}">
+<section class="blog_and_sidebar_container">
+
+    <section class="blog_container">
+        <h1>Tous mes articles</h1>
+        {% if is_granted('ROLE_ADMIN')%}
+        <a href="{{path('app_article_new')}}">Ajouter un article</a>
+        {% endif %}
+
+        <article class="blog_article_container">
+        {% for article in articles %}
+            <div>
+                {% if article.img %}
+                    <img src="{{ asset('uploadDirectory/' ~ article.img) }}" alt="{{ article.title }}" class="tab_img">
+                    {% else %}
+                        <img src="{{ asset('assets/img/questionmarkcake.jpg')}}" alt="Image générique" class="tab_img">
+                {% endif %}
+            </div>
+            <div>
+                <a href="{{ path('app_article_show', {'id': article.id}) }}">
                 <h3>{{ article.title }}</h3>
-            </a>
-            <p> {{article.article_text}} </p>
-            <p> {{article.createDate|date('d-m-Y')}} </p>
+                </a>
+                <p> {{article.article_text}} </p>
+                <p> {{article.createDate|date('d-m-Y')}} </p>
+            </div>
+        {% endfor %}
         </article>
-    {% endfor %}
     </section>
+
+
+    <section class="blog_sidebar">
+        <div>
+            <p>Paragraphe de test1</p>
+        </div>
+        <div>
+            <p>Paragraphe de test2</p>
+        </div>
+        <div>
+            <p>Paragraphe de test3</p>
+        </div>
+        <div>
+            <p>Paragraphe de test4</p>
+        </div>
+    </section>
+
+
+</section>
+    
 {% endblock %}

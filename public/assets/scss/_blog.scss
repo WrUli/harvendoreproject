@@ -1,0 +1,26 @@
+.blog_and_sidebar_container {
+    display: flex;
+}
+
+.blog_sidebar {
+    background-color: lightgreen;
+    top: 0;
+    width: 15%;
+    height: 100vh;
+    // position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog_container {
+    background-color: lightcoral;
+    width: 50%;
+    margin-left: 19%;
+    a {
+        display: inline-block;
+    }
+}
+
+.blog_article_container {
+    display: flex;
+}

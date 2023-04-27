@@ -9,7 +9,7 @@
     
     <section class="pannel_admin_container">
 
-        <div class="sidebar_admin">
+        <div class="admin_sidebar">
             <a href="{{path('app_admin_article')}}">Liste des articles</a>
             <a href="{{path('app_admin_comment')}}">Liste des commentaires</a>
             <a href="{{path('app_admin_user')}}">Liste des utilisateurs</a>
@@ -39,23 +39,24 @@
                 <tbody class="tab_container">
                     {% for article in articles %}
                         <tr>
-                            <td>
-                                <a href="{{ path('app_article_show', {'id': article.id}) }}" class="admin_tab_title">
-                                    {{ article.article_title_admin_short }}
-                                </a>
+                            <td >
+                                <p class="tab_spacing_index_2">
+                                    <a href="{{ path('app_article_show', {'id': article.id}) }}" class="admin_tab_title">
+                                    {{ article.article_title_admin_short }}</a>
+                                </p>
                             </td>
                             <td>
                                 {% if article.img %}
-                                    <img src="{{ asset('uploadDirectory/' ~ article.img) }}" alt="{{ article.title }}" class="tab_img">
+                                    <img src="{{ asset('uploadDirectory/' ~ article.img) }}" alt="{{ article.article_title_admin_short }}" class="tab_img">
                                 {% else %}
                                     <img src="{{ asset('assets/img/questionmarkcake.jpg')}}" alt="Image générique" class="tab_img">
                                 {% endif %}
                             </td>
-                            <td><p class="admin_tab_padding">{{ article.article_text_admin_short }}</p></td>
-                            <td><p class="admin_tab_padding tab_spacing">{{ article.createDate|date('d-m-Y') }}</p></td>
-                            <td><p class="admin_tab_padding tab_spacing">{{ article.updateDate|date('d-m-Y') }}</p></td>
-                            <td><p class="admin_tab_padding">{{ article.comment_count }}</p></td>
-                            <td class="btn_container">
+                            <td><p class="admin_tab_padding tab_spacing_index_1">{{ article.article_text_admin_short }}</p></td>
+                            <td><p class="admin_tab_padding tab_spacing_index_3">{{ article.createDate|date('d-m-Y') }}</p></td>
+                            <td><p class="admin_tab_padding tab_spacing_index_3">{{ article.updateDate|date('d-m-Y') }}</p></td>
+                            <td><p class="admin_tab_padding tab_spacing_index_3">{{ article.comment_count }}</p></td>
+                            <td class="btn_container tab_spacing_index_3">
                                 <a href="{{ path('app_article_show', {'id': article.id}) }}" class="btn btn_show">Afficher</a>
                                 <a href="{{ path('app_admin_article_edit', {'id': article.id}) }}" class="btn btn_modify">Modifier</a>
                                 <a href="{{ path('app_article_delete', {'id': article.id}) }}" class="btn btn_delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')">Supprimer</a>

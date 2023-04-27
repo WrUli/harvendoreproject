@@ -2,7 +2,7 @@
   display: flex;
 }
 
-.sidebar_admin {
+.admin_sidebar {
   top: 0;
   width: 15vw;
   height: 100vh;
@@ -32,8 +32,16 @@
   }
 }
 
-.tab_spacing {
-  width: 140px;
+.tab_spacing_index_1 {
+  width: 300px;
+}
+
+.tab_spacing_index_2 {
+  width: 200px;
+}
+
+.tab_spacing_index_3 {
+  width: 150px;
 }
 
 .table_admin_addarticle {
@@ -97,6 +105,7 @@
 }
 
 .btn {
+  display: inline-block;
   cursor: pointer;
   border-radius: 5px;
   color: #fff;
@@ -118,7 +127,7 @@
 // USER 
 
 .table_user_admin {
-  padding-left: 50%;
+  padding-left: 28%;
 }
 
 .btn_container_user {
@@ -129,10 +138,6 @@
 }
 
 // COMMENT 
-
-.tab_spacing_comment {
-  width: 200px;
-}
 
 .btn_container_comment {
   display: flex;
