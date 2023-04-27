@@ -11,39 +11,49 @@
         <a href="{{path('app_article_new')}}">Ajouter un article</a>
         {% endif %}
 
-        <article class="blog_article_container">
-        {% for article in articles %}
-            <div>
-                {% if article.img %}
-                    <img src="{{ asset('uploadDirectory/' ~ article.img) }}" alt="{{ article.title }}" class="tab_img">
-                    {% else %}
-                        <img src="{{ asset('assets/img/questionmarkcake.jpg')}}" alt="Image générique" class="tab_img">
-                {% endif %}
-            </div>
-            <div>
-                <a href="{{ path('app_article_show', {'id': article.id}) }}">
-                <h3>{{ article.title }}</h3>
-                </a>
-                <p> {{article.article_text}} </p>
-                <p> {{article.createDate|date('d-m-Y')}} </p>
-            </div>
-        {% endfor %}
-        </article>
+        <div class="blog_articles_container">
+            {% for article in articles %}
+            <a href="{{ path('app_article_show', {'id': article.id}) }}">
+                <article class="blog_article_container">
+                    <div>
+                        {% if article.img %}
+                            <img src="{{ asset('uploadDirectory/' ~ article.img) }}" alt="{{ article.title }}" class="tab_img">
+                            {% else %}
+                                <img src="{{ asset('assets/img/questionmarkcake.jpg')}}" alt="Image générique" class="tab_img">
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h3>{{ article.title }}</h3>
+                        <p> {{article.article_text}} </p>
+                        <p> {{article.createDate|date('d-m-Y')}} </p>
+                    </div>
+                </article> 
+            </a>   
+            {% endfor %}
+        </div>    
     </section>
 
 
     <section class="blog_sidebar">
-        <div>
-            <p>Paragraphe de test1</p>
+        <div class="sidebar_blog_1">
+            <div>
+                <p>Paragraphe de test1</p>
+            </div>
         </div>
-        <div>
-            <p>Paragraphe de test2</p>
+        <div class="sidebar_blog_1">
+            <div>
+                <p>Paragraphe de test2</p>
+            </div>
         </div>
-        <div>
-            <p>Paragraphe de test3</p>
+        <div class="sidebar_blog_1"> 
+            <div>
+                <p>Paragraphe de test3</p>
+            </div>
         </div>
-        <div>
-            <p>Paragraphe de test4</p>
+        <div class="sidebar_blog_1">
+            <div>
+                <p>Paragraphe de test4</p>
+            </div>
         </div>
     </section>
 
