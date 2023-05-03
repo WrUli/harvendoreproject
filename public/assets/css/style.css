@@ -41,7 +41,8 @@ body {
   min-height: 100%;
   margin: 0;
   overflow-y: scroll;
-  background-color: #F2F2F2;
+  background-color: #fff;
+  font-family: "PoppinsSR";
 }
 
 main {
@@ -50,10 +51,12 @@ main {
 
 header {
   height: 25vh;
-  color: white;
-  background-color: #38383F;
+  color: rgb(117, 117, 117);
+  background-color: #fff;
   z-index: 1;
   position: relative;
+  border-bottom: 1px solid rgba(211, 211, 211, 0.555);
+  margin-bottom: 20px;
 }
 
 .header_nav {
@@ -242,7 +245,7 @@ header {
 }
 
 .blog_sidebar {
-  background-color: #F2F2F2;
+  background-color: #fff;
   border: 1px solid lightgrey;
   width: 18%;
   display: flex;
@@ -251,7 +254,7 @@ header {
 }
 
 .blog_container {
-  background-color: #F2F2F2;
+  background-color: #fff;
   width: 50%;
   margin-left: 19%;
 }
@@ -267,10 +270,11 @@ header {
 
 .blog_article_container {
   display: flex;
-  background-color: #FFFFFF;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
+  background-color: #fff;
+  border-top: 1px solid rgba(211, 211, 211, 0.555);
+  border-bottom: 1px solid rgba(211, 211, 211, 0.555);
   margin-right: 15px;
+  padding-top: 15px;
   padding-bottom: 15px;
 }
 

@@ -1,9 +1,11 @@
 header {
     height: 25vh;
-    color: white;
-    background-color: #38383F;
+    color: rgb(117, 117, 117);
+    background-color: #fff;
     z-index: 1;
     position: relative;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.555);
+    margin-bottom: 20px;
 }
 
 .header_nav {

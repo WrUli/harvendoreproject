@@ -6,11 +6,7 @@
 <section class="blog_and_sidebar_container">
 
     <section class="blog_container">
-        <h1>Tous mes articles</h1>
-        {% if is_granted('ROLE_ADMIN')%}
-        <a href="{{path('app_article_new')}}">Ajouter un article</a>
-        {% endif %}
-
+        
         <div class="blog_articles_container">
             {% for article in articles %}
             <a href="{{ path('app_article_show', {'id': article.id}) }}">
