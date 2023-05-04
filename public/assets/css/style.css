@@ -36,6 +36,7 @@ a, a:hover, a:focus, a:active {
 }
 
 body {
+  color: rgb(117, 117, 117);
   display: flex;
   flex-direction: column;
   min-height: 100%;
@@ -77,16 +78,22 @@ header {
   line-height: 15px;
 }
 
-.header_logo {
-  background-image: url("https://www.elevagesaintmarcellin.fr/favicon.ico");
-  height: 125px;
-  width: 125px;
-  background-position: center;
-  background-size: cover;
-  margin: 0 auto;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
+.header_center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header_center .header_center_title {
+  padding-top: 10px;
+  font-size: 50px;
+  font-family: "PoppinsSB";
+  z-index: 0;
+  line-height: 42px;
+}
+.header_center .header_center_p {
+  padding-top: 15px;
+  font-size: 24px;
+  letter-spacing: 2px;
 }
 
 .footer {
@@ -255,8 +262,8 @@ header {
 
 .blog_container {
   background-color: #fff;
-  width: 50%;
-  margin-left: 19%;
+  width: 52%;
+  margin-left: 17%;
 }
 .blog_container a {
   display: inline-block;
@@ -276,12 +283,21 @@ header {
   margin-right: 15px;
   padding-top: 15px;
   padding-bottom: 15px;
+  display: flex;
+  gap: 10px;
 }
-
-.sidebar_blog_1 {
-  height: 100%;
-  width: 100%;
-  background-color: #FFFFFF;
+.blog_article_container .tab_img {
+  height: 200px;
+  width: 275px;
+}
+.blog_article_container .tab_img img {
+  height: 200px;
+  width: 275px;
+  object-fit: cover;
+}
+.blog_article_container .blog_article_text {
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 2560px) {

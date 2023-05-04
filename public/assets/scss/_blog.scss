@@ -13,8 +13,8 @@
 
 .blog_container {
     background-color: #fff;
-    width: 50%;
-    margin-left: 19%;
+    width: 52%;
+    margin-left: 17%;
     a {
         display: inline-block;
     }
@@ -37,12 +37,27 @@
     margin-right: 15px;
     padding-top: 15px;
     padding-bottom: 15px;
+    display: flex;
+    gap: 10px;
+    .tab_img {
+        height: 200px;
+        width: 275px;
+        img {
+            height: 200px;
+            width: 275px;
+            object-fit: cover;
+        }
+    }
+    .blog_article_text {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 
 // SIDEBAR BLOG AND CO 
-.sidebar_blog_1 {
-    height: 100%;
-    width: 100%;
-    background-color: #FFFFFF;
-}
+// .sidebar_blog_1 {
+//     height: 100%;
+//     width: 100%;
+//     background-color: #FFFFFF;
+// }
