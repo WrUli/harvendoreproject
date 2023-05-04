@@ -6,18 +6,31 @@
             {% if  app.user  %}
                 <li> <span class="header_loged_user">Connecté: {{app.user.name }}</span> </li>
                 <li> <a href="{{path('app_logout')}}">Se déconnecter</a> </li>
-            {% if is_granted('ROLE_ADMIN') %}
-                <li> <a href="{{ path('app_admin_article') }}">Pannel Admin</a> </li>
-            {% endif %}
-            {% else %}
-                <li> <a href="{{path('app_register_home')}}">Créer un compte</a> </li>
-                <li> <a href="{{path('app_login')}}">Se connecter</a> </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li> <a href="{{ path('app_admin_article') }}">Pannel Admin</a> </li>
+                {% endif %}
+                {% else %}
+                    <li> <a href="{{path('app_register_home')}}">Créer un compte</a> </li>
+                    <li> <a href="{{path('app_login')}}">Se connecter</a> </li>
             {% endif %}
 
         </ul> 
     </nav>
     
-        <a href="{{path('app_blog')}}"> <div class="header_logo"></div> </a>
+        <div class="header_center">
+            <a href="{{path('app_blog')}}"> <div class="header_logo"></div> 
+                <div class="header_center_title">
+                    <p>Project.</p>
+                    <p>Harvendore</p>
+                </div>
+            </a>
+            <p class="header_center_p">Retrouvez moi sur les réseaux</p>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
     
     {% if  app.user  %}
         

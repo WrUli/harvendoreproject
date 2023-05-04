@@ -1,7 +1,25 @@
 .footer {
     flex-shrink: 0;
-    height: 10vh; 
-    color: white;
-    background-color: #38383F;
     z-index: 1;
+    border-top: 1px solid rgba(211, 211, 211, 0.555);
+    margin-top: 20px;
+}
+
+.footer_container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 23.5%;
+    .footer_title {
+        padding-top: 10px;
+        font-size: 26px;
+        font-family:"PoppinsSB";
+        z-index: 0;
+        line-height: 24px;
+    }
+    .footer_p {
+        padding-top: 15px;
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
 }

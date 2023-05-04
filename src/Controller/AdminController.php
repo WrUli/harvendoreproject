@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Comment;
+use App\Entity\Vote;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
@@ -14,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 
 #[Route('/admin')]
 #[Security('is_granted("ROLE_ADMIN")')]
@@ -105,12 +106,30 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('app_article_show', ['id' => $comment->getArticle()->getId()]);
     }
 
-    #[Route('/article/{id}/delete', name: 'app_article_delete')]
-    public function deleteArticleAdmin(ArticleRepository $articleRepository, Article $article)
-    {
-        $user = $this->getUser();
 
-        $articleRepository->remove($article, true);
+
+    #[Route('/article/{id}/delete', name: 'app_article_delete')]
+    public function deleteArticleAdmin(ArticleRepository $articleRepository, Article $article, PersistenceManagerRegistry $doctrine, $id)
+    {
+        $em = $doctrine->getManager();
+        $commentRepository = $em->getRepository(Comment::class);
+        $comments = $commentRepository->findBy(['article' => $id]);
+        foreach ($comments as $comment) {
+            $em->remove($comment);
+        }
+
+        $commentRepository = $em->getRepository(Vote::class);
+        $votes = $commentRepository->findBy(['article' => $id]);
+        foreach ($votes as $vote) {
+            $em->remove($vote);
+        }
+
+        $article = $articleRepository->find($id);
+        if (!$article) {
+            throw $this->createNotFoundException('No article found for id' . $id);
+        }
+        $em->remove($article);
+        $em->flush();
 
         return $this->redirectToRoute('app_admin_article');
     }

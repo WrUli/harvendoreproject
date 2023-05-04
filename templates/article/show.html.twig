@@ -4,11 +4,15 @@
 
 {% block body %}
 
-    <h1>Mon article</h1>
-    <a href="{{ path('app_blog') }}">Revenir à tous les articles</a>
+    <a href="{{ path('app_blog') }}">
+    <h1>Revenir à tous les articles</h1>
+    </a>
     
     <article class="article_container">
         <h3> {{article.title}} </h3>
+        <div class="tab_img">
+            <img src="{{ asset('uploadDirectory/' ~ article.img) }}" alt="{{ article.title }}" >
+        </div>
         <p> {{article.articleText}} </p>
         <p> {{article.createDate|date('d-m-Y')}} </p>
         <p>{{ article.likes }} Likes, {{ article.dislikes }} Dislikes</p>

@@ -11,17 +11,19 @@
             {% for article in articles %}
             <a href="{{ path('app_article_show', {'id': article.id}) }}">
                 <article class="blog_article_container">
-                    <div>
+                    <div class="blog_img_container">
                         {% if article.img %}
-                            <img src="{{ asset('uploadDirectory/' ~ article.img) }}" alt="{{ article.title }}" class="tab_img">
-                            {% else %}
-                                <img src="{{ asset('assets/img/questionmarkcake.jpg')}}" alt="Image générique" class="tab_img">
+                            <img class="blog_img" src="{{ asset('uploadDirectory/' ~ article.img) }}" alt="{{ article.title }}" >
+                        {% else %}
+                            <img class="blog_img" src="{{ asset('assets/img/questionmarkcake.jpg')}}" alt="Image générique" >
                         {% endif %}
                     </div>
-                    <div>
-                        <h3>{{ article.title }}</h3>
+                    <div class="blog_article_text">
+                        <div>
+                            <h3>{{ article.title }}</h3>
+                            <p> {{article.createDate|date('d-m-Y')}} </p>
+                        </div>
                         <p> {{article.article_text}} </p>
-                        <p> {{article.createDate|date('d-m-Y')}} </p>
                     </div>
                 </article> 
             </a>   
