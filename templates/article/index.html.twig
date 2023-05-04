@@ -13,9 +13,19 @@
                 <article class="blog_article_container">
                     <div class="blog_img_container">
                         {% if article.img %}
+<<<<<<< HEAD
                             <img class="blog_img" src="{{ asset('uploadDirectory/' ~ article.img) }}" alt="{{ article.title }}" >
                         {% else %}
                             <img class="blog_img" src="{{ asset('assets/img/questionmarkcake.jpg')}}" alt="Image générique" >
+=======
+                        <adiv class="tab_img">
+                             <img src="{{ asset('uploadDirectory/' ~ article.img) }}" alt="{{ article.title }}" >
+                        </div>
+                        {% else %}
+                        <div class="tb_img">
+                            <img src="{{ asset('assets/img/questionmarkcake.jpg')}}" alt="Image générique" >
+                        </div>
+>>>>>>> refs/remotes/origin/master
                         {% endif %}
                     </div>
                     <div class="blog_article_text">
