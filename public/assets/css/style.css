@@ -96,6 +96,33 @@ header {
   letter-spacing: 2px;
 }
 
+.logo_brand {
+  padding-top: 3px;
+  padding-right: 3px;
+  padding-left: 4px;
+  padding-bottom: 4px;
+  border: 1.5px solid transparent;
+  border-radius: 8px;
+  animation: border-load 2s ease-in-out infinite;
+}
+
+@keyframes border-load {
+  0% {
+    border-color: transparent transparent transparent transparent;
+  }
+  25% {
+    border-color: lightgray transparent transparent transparent;
+  }
+  50% {
+    border-color: lightgray lightgray transparent transparent;
+  }
+  75% {
+    border-color: lightgray lightgray lightgray transparent;
+  }
+  100% {
+    border-color: lightgray lightgray lightgray lightgray;
+  }
+}
 .footer {
   flex-shrink: 0;
   z-index: 1;

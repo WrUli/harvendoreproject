@@ -44,6 +44,7 @@ class ArticleRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('a')
             ->select('a.id', 'a.title', 'a.article_text','a.createDate', 'a.img')
+            ->orderBy('a.createDate', 'DESC')
             ->getQuery()
             ->getResult();
         return $qb;
