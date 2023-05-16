@@ -161,7 +161,7 @@ header {
   display: flex;
   flex-direction: column;
   padding-top: 12%;
-  background-color: #564d55;
+  background-color: #fff;
   z-index: 0;
 }
 .admin_sidebar a {

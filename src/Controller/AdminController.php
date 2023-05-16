@@ -111,8 +111,13 @@ class AdminController extends AbstractController
     #[Route('/article/{id}/delete', name: 'app_article_delete')]
     public function deleteArticleAdmin(ArticleRepository $articleRepository, Article $article, PersistenceManagerRegistry $doctrine, $id)
     {
+        //em  = EntityManager. Doctrine biblio de gestion d'entité de Symfo
+        //récup' du gestionnaire pour créa/update/delete
         $em = $doctrine->getManager();
+        //obtention du repo d'entity Comment
+        //récup des objets de l'entity
         $commentRepository = $em->getRepository(Comment::class);
+        //récup tous les commentaires liés à l'article spécifique via l'ID
         $comments = $commentRepository->findBy(['article' => $id]);
         foreach ($comments as $comment) {
             $em->remove($comment);
