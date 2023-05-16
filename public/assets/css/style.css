@@ -190,6 +190,10 @@ header {
   width: 200px;
 }
 
+.tab_spacing_index_4 {
+  width: 200px;
+}
+
 .tab_spacing_index_3 {
   width: 150px;
 }
@@ -417,6 +421,50 @@ form[name=comment_form] button[type=submit] {
   }
   .tab_spacing_index_3 {
     width: 125px;
+  }
+}
+@media screen and (max-width: 1550px) {
+  .admin_sidebar {
+    padding-top: 25%;
+  }
+  .btn_container_user {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 1520px) {
+  .tab_spacing_index_1 {
+    width: 100px;
+  }
+  .tab_spacing_index_2 {
+    width: 125px;
+  }
+  .tab_spacing_index_3 {
+    width: 125px;
+  }
+  .tab_spacing_index_3 {
+    width: 100px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .admin_sidebar {
+    padding-top: 35%;
+    width: 20vw;
+  }
+  .tab_spacing_index_2 {
+    width: 120px;
+  }
+  .tab_spacing_index_3 {
+    width: 110px;
+  }
+  .tab_spacing_index_4 {
+    width: 75px;
+  }
+  .table_container {
+    width: 80vw;
+  }
+  .table_admin {
+    padding-left: 24%;
   }
 }
 

@@ -51,7 +51,7 @@ class ArticleController extends AbstractController
             'form' => $form
         ]);
     }
-
+    
     #[Route('article/{id}', name: 'app_article_show')]
     public function showArticleById(Request $request, ArticleRepository $articleRepository, CommentRepository $commentRepository,int $id)
     {

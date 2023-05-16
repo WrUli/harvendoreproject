@@ -25,7 +25,7 @@
                 {% for user in users %}
                     <tr>
                         <td><p class="admin_tab_padding tab_spacing_index_2">{{ user.email }}</p></td>
-                        <td><p class="admin_tab_padding tab_spacing_index_2">{{ user.name }}</p></td>
+                        <td><p class="admin_tab_padding tab_spacing_index_4">{{ user.name }}</p></td>
                         <td>
                             {% if user.roles is defined and user.roles|length %}
                                 <ul class="admin_tab_padding tab_spacing_index_1">
